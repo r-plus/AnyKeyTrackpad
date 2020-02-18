@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>title</key>
+        <string>AnyKeyTrackpad</string>
+        <key>entry</key>
+        <dict>
+            <key>cell</key>
+            <string>PSLinkCell</string>
+            <key>icon</key>
+            <string>AnyKeyTrackpad.png</string>
+            <key>label</key>
+            <string>AnyKeyTrackpad</string>
+        </dict>
+        <key>items</key>
+        <array>
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Trackpad enterable keys</string>
+                <key>footerText</key>
+                <string>"Accented Variant Keys" for example Ä</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <false/>
+                <key>defaults</key>
+                <string>jp.r-plus.AnyKeyTrackpad</string>
+                <key>key</key>
+                <string>AllowVariantKeys</string>
+                <key>label</key>
+                <string>Have Accented Variant Keys</string>
+                <key>PostNotification</key>
+                <string>jp.r-plus.anykeytrackpad.settingschanged</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <true/>
+                <key>defaults</key>
+                <string>jp.r-plus.AnyKeyTrackpad</string>
+                <key>key</key>
+                <string>AllowTenKeys</string>
+                <key>label</key>
+                <string>Ten Keys</string>
+                <key>PostNotification</key>
+                <string>jp.r-plus.anykeytrackpad.settingschanged</string>
+            </dict>
+        </array>
+    </dict>
+</plist>

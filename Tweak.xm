@@ -1,6 +1,7 @@
 #define PREF_PATH @"/var/mobile/Library/Preferences/jp.r-plus.AnyKeyTrackpad.plist"
 #define LOG_PATH @"/tmp/zanykey.log"
 #import <DLog.h>
+#import <UIKit/UIKit.h>
 
 static BOOL allowVariantKeys = NO;
 static BOOL allowTenKeys = YES;

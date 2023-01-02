@@ -1,3 +1,4 @@
+#define DLOG_OSLOG 1
 #define PREF_PATH @"/var/mobile/Library/Preferences/jp.r-plus.AnyKeyTrackpad.plist"
 #define LOG_PATH @"/tmp/zanykey.log"
 #import <DLog.h>
@@ -5,6 +6,7 @@
 
 static BOOL allowVariantKeys = NO;
 static BOOL allowTenKeys = YES;
+static BOOL allowEmojiKeys = NO;
 
 // {{{ interfaces
 @interface UIKBTree : NSObject
@@ -56,6 +58,9 @@ static BOOL ContainsStringAny(NSString *str, NSArray<NSString *> *any)
         if (!allowTenKeys && isTenKey) {
             continue;
         }
+        if (!allowEmojiKeys && [k.name containsString:@"Emoji-InputView-Key"]) {
+            continue;
+        }
 
         [regions addObject:[NSValue valueWithCGRect:k.frame]];
     }
@@ -79,6 +84,8 @@ static void LoadSettings()
     allowVariantKeys = variantPref ? [variantPref boolValue] : NO;
     id tenPref = [dict objectForKey:@"AllowTenKeys"];
     allowTenKeys = tenPref ? [tenPref boolValue] : YES;
+    id emojiPref = [dict objectForKey:@"AllowEmojiKeys"];
+    allowEmojiKeys = emojiPref ? [emojiPref boolValue] : NO;
 }
 
 static void PostNotification(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)

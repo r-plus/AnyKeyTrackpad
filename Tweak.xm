@@ -1,6 +1,6 @@
+#import <rootless.h>
 #define DLOG_OSLOG 1
-#define PREF_PATH @"/var/mobile/Library/Preferences/jp.r-plus.AnyKeyTrackpad.plist"
-#define LOG_PATH @"/tmp/zanykey.log"
+#define PREF_PATH ROOT_PATH_NS(@"/var/mobile/Library/Preferences/jp.r-plus.AnyKeyTrackpad.plist")
 #import <DLog.h>
 #import <UIKit/UIKit.h>
 
@@ -34,6 +34,7 @@ static BOOL ContainsStringAny(NSString *str, NSArray<NSString *> *any)
 }
 // }}}
 %hook UIKeyboardLayoutStar // {{{ main hook
+// no longer call this method when longpress emoji key on iOS 16+
 - (NSArray<NSValue *> *)_keyboardLongPressInteractionRegions // iOS 12+
 {
     NSMutableArray<NSValue *> *regions = [NSMutableArray array];
